@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vorstandsreise 2026 — Unterwegs im Tessin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EFE0;
+    --warm-white: #FAF7F2;
+    --terracotta: #C4623A;
+    --deep-green: #2C4A3E;
+    --sage: #6B8C7D;
+    --gold: #C9A84C;
+    --dark: #1A1208;
+    --mid: #4A3B28;
+    --light-mid: #8C7B62;
+    --lake-blue: #4A7C9E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--dark); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 2rem; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(26,18,8,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-brand { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--gold); letter-spacing: 0.04em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(245,239,224,0.5); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  /* HERO */
+  .hero {
+    height: 100vh; min-height: 600px;
+    position: relative; display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-img {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+  .hero-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(26,18,8,0.3) 0%, rgba(26,18,8,0.15) 50%, rgba(26,18,8,0.65) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 2rem;
+    animation: fadeUp 1.6s ease forwards; opacity: 0; transform: translateY(24px);
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .hero-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.5em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2rem;
+    animation: fadeUp 1.6s 0.2s ease forwards; opacity: 0; transform: translateY(16px);
+  }
+  .hero-pre {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 400; font-style: italic;
+    color: rgba(245,239,224,0.8);
+    display: block; margin-bottom: 0.2rem;
+    animation: fadeUp 1.6s 0.35s ease forwards; opacity: 0; transform: translateY(16px);
+  }
+  .hero-main {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(5rem, 16vw, 12rem);
+    font-weight: 900; line-height: 0.9;
+    color: var(--warm-white);
+    text-shadow: 0 4px 60px rgba(0,0,0,0.4);
+    display: block;
+    animation: fadeUp 1.6s 0.5s ease forwards; opacity: 0; transform: translateY(16px);
+  }
+  .hero-date {
+    display: inline-block; margin-top: 2.5rem;
+    font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(245,239,224,0.6); border-top: 1px solid rgba(201,168,76,0.3);
+    padding-top: 1rem;
+    animation: fadeUp 1.6s 0.8s ease forwards; opacity: 0; transform: translateY(16px);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0; animation: fadeUp 1.6s 1.4s ease forwards;
+  }
+  .hero-scroll span { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,239,224,0.4); }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:0.3; } 50% { opacity:1; } }
+
+  /* OPENING STATEMENT */
+  .statement {
+    padding: 8rem 2rem;
+    max-width: 700px; margin: 0 auto;
+    text-align: center;
+  }
+  .statement-lead {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 400; font-style: italic;
+    line-height: 1.5; color: var(--mid);
+    margin-bottom: 2rem;
+  }
+  .statement p {
+    font-size: 0.95rem; line-height: 1.9;
+    color: var(--light-mid); font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  /* FULL BLEED IMAGE */
+  .full-img {
+    height: 70vh; min-height: 400px;
+    position: relative; overflow: hidden;
+  }
+  .full-img img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 8s ease;
+  }
+  .full-img:hover img { transform: scale(1.03); }
+  .full-img-caption {
+    position: absolute; bottom: 2rem; right: 2rem;
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(245,239,224,0.5);
+  }
+  .full-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,18,8,0.4) 0%, transparent 50%);
+  }
+
+  /* MICRO MOMENT */
+  .micro {
+    padding: 5rem 2rem; text-align: center;
+    max-width: 600px; margin: 0 auto;
+  }
+  .micro p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-style: italic; font-weight: 400;
+    line-height: 1.7; color: var(--mid);
+  }
+
+  /* DIVIDER */
+  .divider { display: flex; align-items: center; gap: 1.5rem; max-width: 200px; margin: 0 auto; padding: 1rem 0; }
+  .divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+  .divider-dot { color: var(--gold); font-size: 0.6rem; }
+
+  /* TWO COLUMN SPLIT */
+  .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+  .split-img { overflow: hidden; }
+  .split-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s ease; }
+  .split-img:hover img { transform: scale(1.04); }
+  .split-text {
+    padding: 5rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .split-text.dark { background: var(--dark); }
+  .split-text.light { background: var(--warm-white); }
+  .split-label {
+    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .split-text.dark .split-label { color: var(--terracotta); }
+  .split-text.light .split-label { color: var(--terracotta); }
+  .split-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .split-text.dark .split-title { color: var(--warm-white); }
+  .split-text.light .split-title { color: var(--dark); }
+  .split-body {
+    font-size: 0.9rem; line-height: 1.9;
+    font-weight: 300; margin-bottom: 1.5rem;
+  }
+  .split-text.dark .split-body { color: rgba(245,239,224,0.65); }
+  .split-text.light .split-body { color: var(--light-mid); }
+  .split-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .split-tag {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border: 1px solid;
+  }
+  .split-text.dark .split-tag { border-color: rgba(196,98,58,0.3); color: rgba(196,98,58,0.8); }
+  .split-text.light .split-tag { border-color: rgba(74,124,158,0.3); color: rgba(74,124,158,0.8); }
+  @media (max-width: 768px) { .split { grid-template-columns: 1fr; } .split-text { padding: 3rem 2rem; } }
+
+  /* FACTS STRIP */
+  .facts-strip {
+    background: var(--dark);
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .fact-item {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid rgba(201,168,76,0.08);
+  }
+  .fact-item:last-child { border-right: none; }
+  .fact-item-label {
+    font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 0.6rem;
+  }
+  .fact-item-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--cream); line-height: 1.5;
+  }
+  @media (max-width: 640px) { .facts-strip { grid-template-columns: 1fr; } .fact-item { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); } }
+
+  /* PROGRAM */
+  .program { padding: 8rem 2rem; background: var(--cream); }
+  .program-inner { max-width: 820px; margin: 0 auto; }
+  .section-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 1rem; display: block;
+  }
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700; line-height: 1.1;
+    color: var(--dark); margin-bottom: 5rem;
+  }
+  .day { margin-bottom: 5rem; }
+  .day-label {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900; font-style: italic;
+    color: var(--terracotta); margin-bottom: 0.3rem;
+  }
+  .day-subtitle {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--light-mid); margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem; border-bottom: 1px solid rgba(74,59,40,0.12);
+  }
+  .day-img { width: 100%; height: 220px; overflow: hidden; margin-bottom: 2.5rem; position: relative; }
+  .day-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .timeline { padding-left: 2rem; border-left: 1px solid rgba(196,98,58,0.2); }
+  .tl-item { position: relative; padding-bottom: 2rem; opacity: 1; transition: opacity 0.5s, transform 0.5s; }
+  .tl-item.animate-ready { opacity: 0; transform: translateX(-8px); }
+  .tl-item.visible { opacity: 1; transform: translateX(0); }
+  .tl-dot { position: absolute; left: -2.35rem; top: 0.3rem; width: 8px; height: 8px; border-radius: 50%; background: var(--terracotta); border: 2px solid var(--cream); }
+  .tl-dot.gold { background: var(--gold); }
+  .tl-dot.green { background: var(--deep-green); }
+  .tl-time { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
+  .tl-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.4rem; }
+  .tl-desc { font-size: 0.88rem; line-height: 1.8; color: var(--light-mid); font-weight: 300; max-width: 560px; }
+  .tl-addr { font-size: 0.8rem; color: var(--sage); margin-top: 0.3rem; font-style: italic; }
+
+  /* QUOTE BAND */
+  .quote-band {
+    background: var(--terracotta); padding: 6rem 2rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .quote-band::before {
+    content: '"'; position: absolute; top: -3rem; left: 50%; transform: translateX(-50%);
+    font-family: 'Playfair Display', serif; font-size: 22rem;
+    color: rgba(0,0,0,0.07); line-height: 1; pointer-events: none;
+  }
+  .quote-band blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-style: italic; font-weight: 400;
+    color: var(--warm-white); max-width: 650px;
+    margin: 0 auto 1.5rem; line-height: 1.6; position: relative;
+  }
+  .quote-band cite { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(245,239,224,0.55); font-style: normal; }
+
+  /* VENUES */
+  .venues { background: var(--dark); padding: 8rem 2rem; }
+  .venues-inner { max-width: 1100px; margin: 0 auto; }
+  .venues-city { margin-bottom: 5rem; }
+  .venues-city-label {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700; color: var(--warm-white);
+    margin-bottom: 0.5rem;
+  }
+  .venues-city-sub {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 2rem;
+    padding-bottom: 1.5rem; border-bottom: 1px solid rgba(245,239,224,0.06);
+  }
+  .venue-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; }
+  .venue-card {
+    background: rgba(245,239,224,0.03);
+    padding: 2rem; border: 1px solid rgba(245,239,224,0.06);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .venue-card:hover { background: rgba(245,239,224,0.06); border-color: rgba(201,168,76,0.2); }
+  .venue-badge {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--terracotta); border: 1px solid rgba(196,98,58,0.25);
+    display: inline-block; padding: 0.15rem 0.6rem; margin-bottom: 0.8rem;
+  }
+  .venue-type-label { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(137,184,204,0.7); margin-bottom: 0.5rem; display: block; }
+  .venue-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--warm-white); margin-bottom: 0.3rem; }
+  .venue-addr { font-size: 0.78rem; color: var(--sage); margin-bottom: 1rem; font-style: italic; }
+  .venue-hours { font-size: 0.78rem; color: rgba(245,239,224,0.35); line-height: 1.6; margin-bottom: 1rem; }
+  .venue-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-style: italic;
+    color: rgba(245,239,224,0.6); line-height: 1.6;
+    border-left: 2px solid rgba(196,98,58,0.3); padding-left: 0.8rem;
+  }
+  .venues-sep { display: flex; align-items: center; gap: 1.5rem; margin: 3.5rem 0; }
+  .venues-sep-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(201,168,76,0.2), transparent); }
+  .venues-sep-dot { color: var(--gold); font-size: 0.7rem; }
+
+  /* TIPS */
+  .tips { padding: 8rem 2rem; background: var(--warm-white); }
+  .tips-inner { max-width: 1000px; margin: 0 auto; }
+  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 4rem; }
+  .tip {
+    padding: 2rem 1.5rem; background: var(--cream);
+    border: 1px solid rgba(74,59,40,0.1);
+    position: relative; overflow: hidden;
+  }
+  .tip::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, var(--terracotta), var(--gold)); }
+  .tip-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
+  .tip-title { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+  .tip-text { font-size: 0.85rem; line-height: 1.75; color: var(--light-mid); font-weight: 300; }
+
+  /* CLOSING */
+  .closing {
+    height: 80vh; min-height: 500px;
+    position: relative; display: flex; align-items: flex-end; justify-content: center;
+    overflow: hidden; padding-bottom: 5rem;
+  }
+  .closing img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .closing-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,18,8,0.8) 0%, rgba(26,18,8,0.1) 60%); }
+  .closing-text { position: relative; text-align: center; }
+  .closing-text p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    font-style: italic; color: rgba(245,239,224,0.9);
+    line-height: 1.6; margin-bottom: 1rem;
+  }
+  .closing-text span { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(245,239,224,0.4); }
+
+  /* FOOTER */
+  .footer { background: var(--dark); padding: 2.5rem 2rem; text-align: center; border-top: 1px solid rgba(201,168,76,0.1); }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 0.4rem; }
+  .footer-sub { font-size: 0.7rem; letter-spacing: 0.2em; color: rgba(140,123,98,0.6); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Tessin 2026</div>
+  <ul class="nav-links">
+    <li><a href="#tessin">Tessin</a></li>
+    <li><a href="#program">Programm</a></li>
+    <li><a href="#venues">Restaurants</a></li>
+    <li><a href="#tips">Tipps</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"><img src="hero.png" alt="Locarno Tessin"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Vorstandsreise · 19.–21. Juni 2026</p>
+    <span class="hero-pre">Unterwegs im</span>
+    <span class="hero-main">Tessin</span>
+    <div class="hero-date">Wohnen · Leben · Mitgestalten</div>
+  </div>
+  <div class="hero-scroll"><span>Entdecken</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- OPENING -->
+<section class="statement">
+  <p class="statement-lead">Raus aus Sitzungszimmern, E-Mails und Alltag.</p>
+  <p>Drei Tage gemeinsam unterwegs. Piazza, Lago Maggiore, Tessiner Gassen — und hoffentlich viele Momente, die bleiben.</p>
+  <p>Das Tessin entschleunigt. Nicht laut. Nicht spektakulär. Sondern auf seine ganz eigene Art.</p>
+</section>
+
+<!-- FULL BLEED: GASSE -->
+<div class="full-img">
+  <img src="gasse.png" alt="Tessiner Gasse" loading="lazy">
+  <div class="full-img-overlay"></div>
+  <span class="full-img-caption">Tessin · Juni 2026</span>
+</div>
+
+<!-- MICRO MOMENT 1 -->
+<div class="micro">
+  <p>Manchmal reicht ein Espresso, ein Schattenplatz und gute Gespräche. Das Tessin versteht das.</p>
+</div>
+
+<!-- CITIES: BELLINZONA -->
+<div id="tessin" class="split">
+  <div class="split-img">
+    <img src="bellinzona.png" alt="Bellinzona" loading="lazy">
+  </div>
+  <div class="split-text dark">
+    <span class="split-label" style="color:var(--terracotta);">Freitag & Samstag</span>
+    <h2 class="split-title">Bellinzona</h2>
+    <p class="split-body">Drei mittelalterliche Burgen, eine Piazza, ein Samstagmarkt der zu den schönsten Tessins zählt. Bellinzona ist kein Touristenmagnet — es ist eine Stadt, die einfach lebt. Abends wird es ruhiger, die Abendsonne färbt die Dächer golden, und plötzlich versteht man, warum man hergekommen ist.</p>
+    <div class="split-tags">
+      <span class="split-tag">UNESCO Weltkulturerbe</span>
+      <span class="split-tag">Samstagmarkt</span>
+      <span class="split-tag">E-Bike Touren</span>
+    </div>
+  </div>
+</div>
+
+<!-- CITIES: LOCARNO -->
+<div class="split">
+  <div class="split-text light" style="order: 1;">
+    <span class="split-label">Samstag & Sonntag</span>
+    <h2 class="split-title" style="color:var(--dark);">Locarno</h2>
+    <p class="split-body" style="color:var(--light-mid);">Die sonnigste Stadt der Schweiz liegt dort, wo der Lago Maggiore die Berge trifft. Palmen, Piazza Grande, Filmfestival — Locarno lebt langsamer. Und das ist genau richtig so.</p>
+    <div class="split-tags">
+      <span class="split-tag" style="border-color:rgba(74,124,158,0.3);color:rgba(74,124,158,0.9);">Lago Maggiore</span>
+      <span class="split-tag" style="border-color:rgba(74,124,158,0.3);color:rgba(74,124,158,0.9);">Piazza Grande</span>
+      <span class="split-tag" style="border-color:rgba(74,124,158,0.3);color:rgba(74,124,158,0.9);">Falconeria</span>
+    </div>
+  </div>
+  <div class="split-img" style="order: 2;">
+    <img src="hero.png" alt="Locarno" loading="lazy">
+  </div>
+</div>
+
+<!-- FACTS STRIP -->
+<div class="facts-strip">
+  <div class="fact-item">
+    <div class="fact-item-label">Hauptstadt</div>
+    <div class="fact-item-text">Bellinzona — UNESCO-Weltkulturerbe seit 2000</div>
+  </div>
+  <div class="fact-item">
+    <div class="fact-item-label">Klima im Juni</div>
+    <div class="fact-item-text">24–28°C, lange Abende, mediterrane Leichtigkeit</div>
+  </div>
+  <div class="fact-item">
+    <div class="fact-item-label">Der Tessiner Merlot</div>
+    <div class="fact-item-text">DOC-klassifiziert — und die Seele des Tessiner Terroirs</div>
+  </div>
+</div>
+
+<!-- MICRO MOMENT 2 -->
+<div class="micro" style="padding: 6rem 2rem;">
+  <p>Zwischen Gotthard und Lago Maggiore entsteht ein Lebensgefühl, das man in der Schweiz kein zweites Mal findet.</p>
+</div>
+
+<!-- PROGRAM -->
+<section class="program" id="program">
+  <div class="program-inner">
+    <span class="section-eyebrow">19.–21. Juni 2026</span>
+    <h2 class="section-heading">Das Programm</h2>
+
+    <!-- FREITAG -->
+    <div class="day">
+      <div class="day-label">Freitag</div>
+      <div class="day-subtitle">Bellinzona · Burgen · Grotti · E-Bikes</div>
+      <div class="day-img">
+        <img src="ebike.PNG" alt="E-Bike Tour" loading="lazy">
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">08:00 Uhr</div>
+          <div class="tl-title">Treffpunkt Bahnhof Luzern</div>
+          <div class="tl-desc">Kopf Gleis 7 — Zugtickets sind organisiert. Abfahrt 08:18 Uhr, Ankunft Bellinzona 09:42 Uhr.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">10:30 Uhr</div>
+          <div class="tl-title">E-Bike Übernahme</div>
+          <div class="tl-desc">BikePort Sagl, Viale Stazione 36b. Start ca. 11:00 Uhr — durch Rebberge, entlang der Moesa, Mittagessen in einem Tessiner Grotto. Rückkehr ca. 14:45 Uhr.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">Nachmittag</div>
+          <div class="tl-title">Hotel Check-in & Freie Zeit</div>
+          <div class="tl-desc">Hotel Internazionale & Spa Bellinzona. Danach gehört die Stadt einem selbst.</div>
+          <div class="tl-addr">💡 Mit der Raiffeisen-Karte freier Eintritt ins Castelgrande — die Aussicht über die Dächer lohnt sich.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">18:50 Uhr</div>
+          <div class="tl-title">Besammlung Rezeption</div>
+          <div class="tl-desc">Bus 19:03 Uhr, Linie B311 Richtung Monte Carasso.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot gold"></div>
+          <div class="tl-time">19:30 Uhr</div>
+          <div class="tl-title">🍷 Nachtessen — Trattoria Er Pipa</div>
+          <div class="tl-desc">Ein Ort, an dem man automatisch länger sitzen bleibt. Tischreservation bestätigt.</div>
+          <div class="tl-addr">Er Stradun 23, Monte Carasso · +41 91 826 45 03</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot">✦</div><div class="divider-line"></div></div>
+
+    <!-- SAMSTAG -->
+    <div class="day" style="margin-top: 4rem;">
+      <div class="day-label">Samstag</div>
+      <div class="day-subtitle">Markt · Lago Maggiore · Locarno</div>
+      <div class="day-img">
+        <img src="markt.png" alt="Markt Bellinzona" loading="lazy">
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">Morgen</div>
+          <div class="tl-title">Markt Bellinzona</div>
+          <div class="tl-desc">Der Samstagmorgen gehört Bellinzona. Regionaler Käse, frisches Gemüse, Blumenstände — lebendig, unkompliziert und voller Genuss.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">Mittag</div>
+          <div class="tl-title">Selbständige Verpflegung</div>
+          <div class="tl-desc">Die Stadt ist Programm. Der Samstagmittag gehört ganz dem eigenen Rhythmus.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">13:19 Uhr</div>
+          <div class="tl-title">Transfer nach Locarno</div>
+          <div class="tl-desc">S20, Gleis 3 ab Bahnhof Bellinzona.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">Nachmittag</div>
+          <div class="tl-title">Locarno — Freie Zeit</div>
+          <div class="tl-desc">Hotel Caffè dell'Arte, Check-in. Piazza Grande, Seepromenade, Funicolare zur Madonna del Sasso — oder einfach am See sitzen. Im Tessin muss nicht jeder Moment geplant sein.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">18:15 Uhr</div>
+          <div class="tl-title">Optionaler Apéro</div>
+          <div class="tl-desc">Treffpunkt vor dem Hotel.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot gold"></div>
+          <div class="tl-time">19:30 Uhr</div>
+          <div class="tl-title">🍷 Nachtessen — Osteria Pozzo</div>
+          <div class="tl-desc">Eines der schönsten Restaurants Locarnos — auf einer ruhigen Piazza, mit grosser Weinauswahl. Tischreservation bestätigt.</div>
+          <div class="tl-addr">Via Borghese 19, Locarno · +41 91 751 02 32</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-dot">✦</div><div class="divider-line"></div></div>
+
+    <!-- SONNTAG -->
+    <div class="day" style="margin-top: 4rem;">
+      <div class="day-label">Sonntag</div>
+      <div class="day-subtitle">Falconeria · Genuss · Heimreise</div>
+      <div class="day-img">
+        <img src="falcon.png" alt="Falconeria" loading="lazy">
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">Morgen</div>
+          <div class="tl-title">Frühstück & Gepäck lagern</div>
+          <div class="tl-desc">Gepäck kann im Hotel zwischengelagert werden.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot green"></div>
+          <div class="tl-time">10:15 Uhr</div>
+          <div class="tl-title">🦅 Falconeria Locarno</div>
+          <div class="tl-desc">Treffpunkt vor dem Hotel, gemeinsamer Spaziergang. Adler, Falken und Eulen fliegen wenige Meter über die Köpfe — eines der eindrücklichsten Erlebnisse am Lago Maggiore. Tickets sind organisiert.</div>
+          <div class="tl-addr">Via delle Scuole 12, Locarno</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot gold"></div>
+          <div class="tl-time">13:00 Uhr</div>
+          <div class="tl-title">🍽 Mittagessen — Isolino Ristorante Wine Bar</div>
+          <div class="tl-desc">Gemeinsames Abschlussmittagessen mit organisiertem Menü. Ein Ort abseits der Touristenströme, mit hervorragender Küche und lokaler Weinauswahl.</div>
+          <div class="tl-addr">Via Della Posta 24, Locarno · +41 91 223 47 47</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-time">15:45 Uhr</div>
+          <div class="tl-title">Rückreise → Luzern</div>
+          <div class="tl-desc">Abfahrt Locarno, Umsteigen Bellinzona. Ankunft Luzern 17:41 Uhr. Plätze in der 1. Klasse reserviert — genügend Zeit, die schönsten Momente nochmals auszupacken.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-band">
+  <blockquote>Nicht laut. Nicht spektakulär. Sondern auf seine ganz eigene Art.</blockquote>
+  <cite>Vorstandsreise 2026 · Wohnen. Leben. Mitgestalten.</cite>
+</div>
+
+<!-- VENUES -->
+<section class="venues" id="venues">
+  <div class="venues-inner">
+    <span class="section-eyebrow">Adressen</span>
+    <h2 class="section-heading" style="color:var(--warm-white); margin-bottom: 4rem;">Restaurants & Bars</h2>
+
+    <!-- BELLINZONA -->
+    <div class="venues-city">
+      <div class="venues-city-label">Bellinzona</div>
+      <div class="venues-city-sub">Freitag & Samstag</div>
+      <div class="venue-grid">
+        <div class="venue-card">
+          <span class="venue-badge">Programmrestaurant Freitag</span>
+          <span class="venue-type-label">Restaurant</span>
+          <div class="venue-name">Trattoria Er Pipa</div>
+          <div class="venue-addr">Er Stradun 23, Monte Carasso</div>
+          <div class="venue-hours">Di–Sa: 10:00–00:00 · Mo & So: geschlossen</div>
+          <div class="venue-quote">Ein Ort, an dem man automatisch länger sitzen bleibt.</div>
+        </div>
+        <div class="venue-card">
+          <span class="venue-type-label">Café / Bar</span>
+          <div class="venue-name">L'arte del Caffè</div>
+          <div class="venue-addr">Viale Portone 45, Bellinzona</div>
+          <div class="venue-hours">Di–Sa: 08:00–17:30 · So: 09:30–17:30</div>
+          <div class="venue-quote">Der einzige Ort in Bellinzona für wirklich guten Kaffee.</div>
+        </div>
+        <div class="venue-card">
+          <span class="venue-type-label">Lounge Bar</span>
+          <div class="venue-name">Agape Lounge Bistrot</div>
+          <div class="venue-addr">Piazza Collegiata 5, Bellinzona</div>
+          <div class="venue-hours">Mo–Fr: 11:00–00:00 · Sa: 09:00–01:00</div>
+          <div class="venue-quote">Direkt auf der Piazza — ideal für den Abend-Apéro mit Blick auf die Altstadt.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="venues-sep"><div class="venues-sep-line"></div><div class="venues-sep-dot">✦</div><div class="venues-sep-line"></div></div>
+
+    <!-- LOCARNO -->
+    <div class="venues-city">
+      <div class="venues-city-label">Locarno</div>
+      <div class="venues-city-sub">Samstag & Sonntag</div>
+      <div class="venue-grid">
+        <div class="venue-card">
+          <span class="venue-badge">Programmrestaurant Samstag</span>
+          <span class="venue-type-label">Restaurant</span>
+          <div class="venue-name">Osteria Pozzo</div>
+          <div class="venue-addr">Via Borghese 19, Locarno</div>
+          <div class="venue-hours">Mo–Sa: 10:00–00:00 · So: geschlossen</div>
+          <div class="venue-quote">Eines der schönsten Restaurants Locarnos — ruhige Piazza, grosse Weinauswahl.</div>
+        </div>
+        <div class="venue-card">
+          <span class="venue-badge">Mittagessen Sonntag</span>
+          <span class="venue-type-label">Restaurant / Wine Bar</span>
+          <div class="venue-name">Isolino Ristorante</div>
+          <div class="venue-addr">Via Della Posta 24, Locarno</div>
+          <div class="venue-hours">Täglich: 07:30–23:45</div>
+          <div class="venue-quote">Hervorragende Küche, lokale Weine — abseits der Touristenströme.</div>
+        </div>
+        <div class="venue-card">
+          <span class="venue-type-label">Bar</span>
+          <div class="venue-name">Mono Bar</div>
+          <div class="venue-addr">Via Antonio Ciseri 19, Locarno</div>
+          <div class="venue-hours">Mo–Do: 10:00–00:00 · Fr–Sa: bis 02:00</div>
+          <div class="venue-quote">Warm, lebendig, gute Musik. Der richtige Ort für einen späten Abend.</div>
+        </div>
+        <div class="venue-card">
+          <span class="venue-type-label">Restaurant / Bar</span>
+          <div class="venue-name">Casa del Negromante</div>
+          <div class="venue-addr">Via Borghese 14, Locarno</div>
+          <div class="venue-hours">Täglich ab 17:00 Uhr</div>
+          <div class="venue-quote">Besondere Atmosphäre im historischen Altstadtgebäude. Ein Abend, der in Erinnerung bleibt.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section class="tips" id="tips">
+  <div class="tips-inner">
+    <span class="section-eyebrow">Für unterwegs</span>
+    <h2 class="section-heading" style="color:var(--dark);">Kleine Hinweise,<br><em style="font-family:'Playfair Display',serif;">grosse Wirkung</em></h2>
+    <div class="tips-grid">
+      <div class="tip"><span class="tip-icon">☕</span><div class="tip-title">Espresso an der Bar</div><div class="tip-text">Immer im Stehen trinken — das ist Tessiner Tradition. Ein «caffè» ist immer ein Espresso.</div></div>
+      <div class="tip"><span class="tip-icon">🍷</span><div class="tip-title">Merlot del Ticino</div><div class="tip-text">DOC-klassifiziert und von höchster Qualität. Im Grotto nach dem «vino della casa» fragen.</div></div>
+      <div class="tip"><span class="tip-icon">🏰</span><div class="tip-title">Castelgrande — gratis</div><div class="tip-text">Mit der Raiffeisen-Karte freier Eintritt. Besonders schön am Abend, wenn die Gassen golden leuchten.</div></div>
+      <div class="tip"><span class="tip-icon">🌊</span><div class="tip-title">Lago Maggiore</div><div class="tip-text">Wassertemperatur im Juni ca. 22–24°C. Das Lido Locarno hat eine grosse Liegewiese direkt am See.</div></div>
+      <div class="tip"><span class="tip-icon">🚡</span><div class="tip-title">Funicolare Locarno</div><div class="tip-text">Alle 15 Minuten zur Madonna del Sasso. Einer der schönsten Ausblicke der Südschweiz.</div></div>
+      <div class="tip"><span class="tip-icon">🧀</span><div class="tip-title">Markt Bellinzona</div><div class="tip-text">Lokale Formaggi, Ricotta fresca, Focaccia. Samstags ab früh — die besten Sachen sind bald weg.</div></div>
+      <div class="tip"><span class="tip-icon">🦅</span><div class="tip-title">Falconeria</div><div class="tip-text">Wer möchte, dass ein Vogel landet — Hut aufsetzen. Das hilft den Falknern bei der Auswahl.</div></div>
+      <div class="tip"><span class="tip-icon">🌙</span><div class="tip-title">Abende auf der Piazza</div><div class="tip-text">Die Tessiner Abendkultur spielt sich draussen ab. Manchmal reicht ein Glas Wein mitten im Leben.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<div class="closing">
+  <img src="sunset.png" alt="Lago Maggiore" loading="lazy">
+  <div class="closing-overlay"></div>
+  <div class="closing-text">
+    <p>«Vielleicht der schönste Moment:<br>Wenn Bellinzona langsam ruhiger wird<br>und die Abendsonne die Dächer golden färbt.»</p>
+    <span>Tessin · Juni 2026</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Vorstandsreise 2026</div>
+  <p class="footer-sub">Wohnen · Leben · Mitgestalten · 19.–21. Juni 2026</p>
+</footer>
+
+<script>
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(e => {
+      e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.tl-item').forEach((el, i) => {
+      el.classList.add('animate-ready');
+      el.style.transitionDelay = `${i * 0.06}s`;
+      obs.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
